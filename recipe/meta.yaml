@@ -1,6 +1,5 @@
 {% set name = "plumed" %}
 {% set version = "2.5.1" %}
-{% set sha256 = "de309980dcfd6f6e0e70e138856f4bd9eb4d8a513906a5e6389f18a5af7f2eba" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +7,7 @@ package:
 
 source:
   url: https://github.com/plumed/plumed2/archive/v{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: de309980dcfd6f6e0e70e138856f4bd9eb4d8a513906a5e6389f18a5af7f2eba
 
 build:
   number: 1
