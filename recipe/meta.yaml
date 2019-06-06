@@ -10,7 +10,7 @@ source:
   sha256: de309980dcfd6f6e0e70e138856f4bd9eb4d8a513906a5e6389f18a5af7f2eba
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win]
 # Most programs should link libplumedWrapper.a so that libplumedKernel.so will be loaded
 # with dlopen. There is no need for pinning thus.
@@ -21,6 +21,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - make
 # xxd is provided by package vim and used during build
     - vim  # [linux]
   host:
@@ -37,7 +38,6 @@ test:
     - plumed-patch -h
     - plumed config has external_blas external_lapack gsl xdrfile zlib
     - $PREFIX/lib/plumed/plumed-runtime -h
-    - test -f $PREFIX/lib/libplumed.a
     - test -f $PREFIX/lib/libplumed$SHLIB_EXT
     - test -f $PREFIX/lib/libplumedWrapper.a
     - test -f $PREFIX/lib/libplumedKernel$SHLIB_EXT
@@ -54,7 +54,7 @@ about:
     PLUMED is an open source library for free energy calculations in
     molecular systems which works together with some of the most
     popular molecular dynamics engines.
-  doc_url: https://www.plumed.org/doc-v{{ version.split('.')[0] }}.{{ version.split('.')[1] }}/user-doc/html/index.html
+  doc_url: https://www.plumed.org/doc
   dev_url: https://github.com/plumed/plumed2
 
 extra:
