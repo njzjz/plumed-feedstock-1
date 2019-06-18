@@ -10,7 +10,7 @@ source:
   sha256: de309980dcfd6f6e0e70e138856f4bd9eb4d8a513906a5e6389f18a5af7f2eba
 
 build:
-  number: 1
+  number: 2
   skip: True  # [win]
 # Most programs should link libplumedWrapper.a so that libplumedKernel.so will be loaded
 # with dlopen. There is no need for pinning thus.
