@@ -29,6 +29,7 @@ requirements:
     - gsl
     - libblas
     - liblapack
+    - llvm-openmp  # [osx]
     - xdrfile
     - zlib
   run:
