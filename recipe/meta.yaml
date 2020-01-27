@@ -33,6 +33,7 @@ requirements:
     - xdrfile
     - zlib
   run:
+    - gawk
     - llvm-openmp  # [osx]
 
 test:
