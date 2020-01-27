@@ -1,5 +1,5 @@
 {% set name = "plumed" %}
-{% set version = "2.6.0" %}
+{% set version = "2.5.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/plumed/plumed2/archive/v{{ version }}.tar.gz
-  sha256: 3d57ae460607a49547ef38a52c4ac93493a3966857c352280a9c05f5dcdb1820
+  sha256: a1647e598191f261e75d06351e607475d395af481315052a4c28563ac9989a7f
 
 build:
   number: 0
@@ -33,7 +33,6 @@ requirements:
     - xdrfile
     - zlib
   run:
-    - gawk
     - llvm-openmp  # [osx]
 
 test:
