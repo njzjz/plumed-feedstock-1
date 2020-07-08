@@ -1,5 +1,5 @@
 {% set name = "plumed" %}
-{% set version = "2.6.0" %}
+{% set version = "2.6.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://github.com/plumed/plumed2/archive/v{{ version }}.tar.gz
-  sha256: 3d57ae460607a49547ef38a52c4ac93493a3966857c352280a9c05f5dcdb1820
+  sha256: c1b3c397b2d971140aa240dde50e48a04ce78e3dedb02b6dca80fa53f8026e4e
 
 build:
-  number: 2
-  skip: True  # [win]
+  number: 0
+  skip: true  # [win]
 # Most programs should link libplumedWrapper.a so that libplumedKernel.so will be loaded
 # with dlopen. There is no need for pinning thus.
 # Programs linking libplumed.so should pin to min_pin='x.x', max_pin='x'.
@@ -55,7 +55,7 @@ about:
   license: LGPL-3.0
   license_family: GPL
   license_file: COPYING.LESSER
-  summary: 'Free energy calculations in molecular systems'
+  summary: Free energy calculations in molecular systems
   description: |
     PLUMED is an open source library for free energy calculations in
     molecular systems which works together with some of the most
