@@ -1,5 +1,5 @@
 {% set name = "plumed" %}
-{% set version = "2.6.1" %}
+{% set version = "2.6.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/plumed/plumed2/archive/v{{ version }}.tar.gz
-  sha256: c1b3c397b2d971140aa240dde50e48a04ce78e3dedb02b6dca80fa53f8026e4e
+  sha256: bbc2ef0cb08d404513b8b737c72333b6656389e15effd6a0f9ace2a5758c9a4a
 
 build:
   number: 0
