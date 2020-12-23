@@ -1,5 +1,5 @@
 {% set name = "plumed" %}
-{% set version = "2.6.2" %}
+{% set version = "2.7.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/plumed/plumed2/archive/v{{ version }}.tar.gz
-  sha256: bbc2ef0cb08d404513b8b737c72333b6656389e15effd6a0f9ace2a5758c9a4a
+  sha256: 14450ea566c25ac9bf71fd77bb9c0c95e9038462b5739c73a515be82e2011cd6
 
 build:
   number: 0
@@ -47,8 +47,6 @@ test:
     - test -f $PREFIX/lib/libplumed$SHLIB_EXT
     - test -f $PREFIX/lib/libplumedWrapper.a
     - test -f $PREFIX/lib/libplumedKernel$SHLIB_EXT
-    - conda inspect linkages -p $PREFIX $PKG_NAME
-    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
 
 about:
   home: http://www.plumed.org/
