@@ -37,8 +37,6 @@ requirements:
     - {{ compiler('cxx') }}
     - llvm-openmp  # [osx]
     - make
-    - {{ mpi }}-mpicc  # [mpi != "nompi"]
-    - {{ mpi }}-mpicxx  # [mpi != "nompi"]
 # xxd is provided by package vim and used during build
     - vim  # [linux]
   host:
@@ -57,6 +55,9 @@ requirements:
 
 test:
   commands:
+    - export OMPI_MCA_plm=isolated  # [mpi == "openmpi" and linux]
+    - export OMPI_MCA_btl_vader_single_copy_mechanism=none  # [mpi == "openmpi" and linux]
+    - export OMPI_MCA_rmaps_base_oversubscribe=yes  # [mpi == "openmpi" and linux]
     - plumed info --root
     - plumed info --long-version
     - plumed-patch -h

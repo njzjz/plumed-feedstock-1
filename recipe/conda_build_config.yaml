@@ -1,7 +1,7 @@
 mpi:
   - nompi
-  - mpich
-  - openmpi
+  - mpich  # [not (osx and arm64)]
+  - openmpi  # [not (osx and arm64)]
 pin_run_as_build:
   mpich: x.x
   openmpi: x.x 
