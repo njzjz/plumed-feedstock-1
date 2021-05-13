@@ -37,6 +37,8 @@ requirements:
     - {{ compiler('cxx') }}
     - llvm-openmp  # [osx]
     - make
+    - {{ mpi }}-mpicc  # [mpi != "nompi"]
+    - {{ mpi }}-mpicxx  # [mpi != "nompi"]
 # xxd is provided by package vim and used during build
     - vim  # [linux]
   host:
