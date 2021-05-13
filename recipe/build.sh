@@ -1,8 +1,9 @@
 #!/bin/bash
+set -ex
 
 if [[ "${mpi}" != "nompi" ]]; then
-  export MPICXX="$PREFIX/bin/mpicxx"
-  export MPICC="$PREFIX/bin/mpicc"
+  export CXX="$PREFIX/bin/mpicxx"
+  export CC="$PREFIX/bin/mpicc"
 fi
 
 if [[ $(uname) == "Linux" ]]; then
