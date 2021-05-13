@@ -1,4 +1,10 @@
 #!/bin/bash
+set -ex
+
+if [[ "${mpi}" != "nompi" ]]; then
+  export CXX="$PREFIX/bin/mpicxx"
+  export CC="$PREFIX/bin/mpicc"
+fi
 
 if [[ $(uname) == "Linux" ]]; then
 # STATIC_LIBS is a PLUMED specific option and is required on Linux for the following reason:
