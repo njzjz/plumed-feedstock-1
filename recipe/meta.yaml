@@ -1,5 +1,7 @@
 {% set name = "plumed" %}
 {% set version = "2.7.1" %}
+{% set build = 1 %}
+{% set mpi = mpi or "nompi" %}
 
 package:
   name: {{ name|lower }}
@@ -10,12 +12,24 @@ source:
   sha256: cb8b5735d8dd61980fa6441f3dde3f33544240ae4177da0f529fb5abb355cd4a
 
 build:
-  number: 0
+  number: {{ build }}
   skip: true  # [win]
 # Most programs should link libplumedWrapper.a so that libplumedKernel.so will be loaded
 # with dlopen. There is no need for pinning thus.
 # Programs linking libplumed.so should pin to min_pin='x.x', max_pin='x'.
 # Programs linking libplumedKernel.so should pin to min_pin='x.x.x'. max_pin='x.x.x'.
+
+  {% if mpi != "nompi" %}
+  {% set mpi_prefix = "mpi_" + mpi %}
+  {% else %}
+  {% set mpi_prefix = "nompi" %}
+  {% endif %}
+  string: {{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}
+
+  {% if mpi != "nompi" %}
+  run_exports:
+    - {{ name }} * {{ mpi_prefix }}_*
+  {% endif %}
 
 requirements:
   build:
@@ -26,6 +40,7 @@ requirements:
 # xxd is provided by package vim and used during build
     - vim  # [linux]
   host:
+    - {{ mpi }}  # [mpi != "nompi"]
     - fftw
     - gsl
     - libblas
@@ -34,6 +49,7 @@ requirements:
     - xdrfile
     - zlib
   run:
+    - {{ mpi }}  # [mpi != "nompi"]
     - gawk
     - llvm-openmp  # [osx]
 
