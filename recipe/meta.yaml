@@ -1,6 +1,6 @@
 {% set name = "plumed" %}
 {% set version = "2.7.1" %}
-{% set build = 1 %}
+{% set build = 2 %}
 {% set mpi = mpi or "nompi" %}
 
 package:
@@ -10,6 +10,9 @@ package:
 source:
   url: https://github.com/plumed/plumed2/archive/v{{ version }}.tar.gz
   sha256: cb8b5735d8dd61980fa6441f3dde3f33544240ae4177da0f529fb5abb355cd4a
+# This patch is needed for plumed 2.7. It should be removed when upgrading to plumed 2.8
+  patches:
+    - remove-xxd-dep.patch
 
 build:
   number: {{ build }}
@@ -37,8 +40,6 @@ requirements:
     - {{ compiler('cxx') }}
     - llvm-openmp  # [osx]
     - make
-# xxd is provided by package vim and used during build
-    - vim  # [linux]
   host:
     - {{ mpi }}  # [mpi != "nompi"]
     - fftw
@@ -61,7 +62,9 @@ test:
     - plumed info --root
     - plumed info --long-version
     - plumed-patch -h
-    - plumed config has asmjit external_blas external_lapack fftw gsl xdrfile zlib
+    - plumed config has external_blas external_lapack fftw gsl xdrfile zlib
+    - plumed config has asmjit  # [not ppc64le and not aarch64 and not arm64]
+    - plumed config has mpi  # [mpi != "nompi"]
     - $PREFIX/lib/plumed/plumed-runtime -h
     - test -f $PREFIX/lib/libplumed$SHLIB_EXT
     - test -f $PREFIX/lib/libplumedWrapper.a
@@ -69,7 +72,7 @@ test:
 
 about:
   home: http://www.plumed.org/
-  license: LGPL-3.0
+  license: LGPL-3.0-only
   license_family: GPL
   license_file: COPYING.LESSER
   summary: Free energy calculations in molecular systems

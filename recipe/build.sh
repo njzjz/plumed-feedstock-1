@@ -26,7 +26,7 @@ export CXXFLAGS="${CXXFLAGS//-O2/-O3}"
 export LIBS="-lfftw3 -lgsl -lgslcblas -llapack -lblas -lxdrfile -lz $LIBS"
 
 # --enable-asmjit enables bundled asmjit implementation
-if [[ "$target_platform" != "osx-arm64" ]] ; then
+if [[ "$target_platform" != "osx-arm64" ]] && [[ "$target_platform" != "linux-aarch64" ]] && [[ "$target_platform" != "linux-ppc64le" ]]; then
   ASMJIT=--enable-asmjit
 else
   ASMJIT=""
