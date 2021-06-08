@@ -10,6 +10,7 @@ package:
 source:
   url: https://github.com/plumed/plumed2/archive/v{{ version }}.tar.gz
   sha256: cb8b5735d8dd61980fa6441f3dde3f33544240ae4177da0f529fb5abb355cd4a
+# This patch is needed for plumed 2.7. It should be removed when upgrading to plumed 2.8
   patches:
     - remove-xxd-dep.patch
 
