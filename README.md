@@ -3,7 +3,7 @@ About plumed
 
 Home: http://www.plumed.org/
 
-Package license: LGPL-3.0
+Package license: LGPL-3.0-only
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/plumed-feedstock/blob/master/LICENSE.txt)
 
