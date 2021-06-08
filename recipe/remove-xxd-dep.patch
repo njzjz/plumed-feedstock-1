@@ -114,7 +114,7 @@ index fbaef65d0c..2e1ea03593 100644
  
  completion.xxd: completion.sh ../../scripts/*.sh ../../patches/*.sh
 -	{ ../maketools/make-scripts-options.sh ; cat completion.sh ; }| xxd -i > completion.xxd
-+	{ ../maketools/make-scripts-options.sh ; cat completion.sh ; }| ../maketools/xxd  > completion.xxd
++	{ ../maketools/make-scripts-options.sh ; cat completion.sh ; }| bash ../maketools/xxd  > completion.xxd
  
 diff --git a/src/config/Makefile b/src/config/Makefile
 index b2edd92bfc..5d968c6181 100644
@@ -125,7 +125,7 @@ index b2edd92bfc..5d968c6181 100644
  
  Makefile.conf.xxd: ../../Makefile.conf
 -	cat ../../Makefile.conf | xxd -i > Makefile.conf.xxd
-+	cat ../../Makefile.conf | ../maketools/xxd > Makefile.conf.xxd
++	cat ../../Makefile.conf | bash ../maketools/xxd > Makefile.conf.xxd
  
  # file to import compilation options inside a bash script
  compile_options.sh: ../../Makefile.conf
