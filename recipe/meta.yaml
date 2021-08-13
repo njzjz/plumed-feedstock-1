@@ -1,6 +1,6 @@
 {% set name = "plumed" %}
 {% set version = "2.7.2" %}
-{% set build = 1 %}
+{% set build = 2 %}
 {% set mpi = mpi or "nompi" %}
 
 package:
@@ -14,6 +14,9 @@ source:
   patches:
     - remove-xxd-dep.patch
 
+{% if mpi == 'nompi' %}
+{% set build = build + 100 %}
+{% endif %}
 build:
   number: {{ build }}
   skip: true  # [win]
