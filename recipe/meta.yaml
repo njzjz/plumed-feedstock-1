@@ -1,6 +1,6 @@
 {% set name = "plumed" %}
 {% set version = "2.7.2" %}
-{% set build = 0 %}
+{% set build = 1 %}
 {% set mpi = mpi or "nompi" %}
 
 package:
