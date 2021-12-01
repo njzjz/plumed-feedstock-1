@@ -1,6 +1,6 @@
 {% set name = "plumed" %}
-{% set version = "2.7.2" %}
-{% set build = 2 %}
+{% set version = "2.7.3" %}
+{% set build = 0 %}
 {% set mpi = mpi or "nompi" %}
 
 package:
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://github.com/plumed/plumed2/archive/v{{ version }}.tar.gz
-  sha256: c9a31e68d6440828cf186ca43c9e11a5e5c7ad1c96b2b66ed5a5a141fc954373
+  sha256: aa1f6200c2ed351e40ce4391a9590f171532474b30f384feddfab10e36d7e08e
 # This patch is needed for plumed 2.7. It should be removed when upgrading to plumed 2.8
   patches:
     - remove-xxd-dep.patch
